@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Детали поста
+{% endblock %}
+
+{% block style %}
+  <style type="text/css">
+    .card {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border: 0.1rem solid silver;
+      border-radius: 1rem;
+      max-width: 40.63rem;
+      width: 100%;
+    }
+    .card > img {
+      border-radius: 1rem;
+    }
+   </style>
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    <form action="" method="post">
+      {% csrf_token %}
+      <p>Вы действительно хотите удалить пост <b>{{ post.title }}</b>?</p>
+      <input type="submit" name="Cancel" value="Cancel" />
+      <input type="submit" value="Confirm" />
+    </form>
+
+  </div>
+{% endblock %}

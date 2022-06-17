@@ -1,0 +1,12 @@
+{% block comment %}
+  <form method="post">
+    {% csrf_token %}
+    <label>Username:
+      <input type="text" placeholder="Enter your name" />
+    </label>
+        <label>Content:
+      <input type="text" placeholder="Write your comment" />
+    </label>
+    <input type="submit" />
+  </form>
+{% endblock %}

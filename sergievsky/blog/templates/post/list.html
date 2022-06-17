@@ -1,0 +1,35 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+  Список постов
+{% endblock %}
+
+{% block style %}
+  <style type="text/css">
+    .card {
+      display: flex;
+      flex-direction: column;
+      border: 0.1rem solid silver;
+      border-radius: 1rem;
+      max-width: 40.63rem;
+      width: 100%;
+    }
+    .card > img {
+      border-radius: 1rem;
+    }
+   </style>
+{% endblock %}
+
+{% block content %}
+  {% for post in posts %}
+    <div class="card">
+      {% if post.title_image %}
+        <img src="{{ post.title_image.url }}" alt="title image: Преподобный Сергий Ражонежский">
+      {% endif %}
+      <h2>{{ post.title }}</h2>
+      <p>{{ post.content|truncatewords:20 }}</p>
+      <a href="{{ post.get_absolute_url }}">Read</a>
+    </div>
+  {% endfor %}
+{% endblock %}

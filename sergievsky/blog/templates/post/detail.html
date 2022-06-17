@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Детали поста
+{% endblock %}
+
+{% block style %}
+  <style type="text/css">
+    .card, .comment {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      border: 0.1rem solid silver;
+      border-radius: 1rem;
+      max-width: 40.63rem;
+      width: 100%;
+    }
+    .card > img {
+      border-radius: 1rem;
+    }
+    .comment {
+      margin-top: 1rem;
+    }
+    .comment > ul > li {
+      list-style: none;
+    }
+   </style>
+{% endblock %}
+
+{% block content %}
+  <div class="card">
+    {% if post.title_image %}
+      <img src="{{ post.title_image.url }}" alt="title image: Преподобный Сергий Ражонежский">
+    {% endif %}
+    <h2>{{ post.title }}</h2>
+    <p>{{ post.content }}</p>
+    <a href="{{ post.get_absolute_url}}/delete">Delete</a>
+  </div>
+  <div class="comment">
+    {% include 'comment/create.html' %}
+    <h3>Comments:</h3>
+    <ul>
+      {% for comment in comments %}
+        <li>
+          <h4>{{ comment.name }}</h4>
+          <p>{{ comment.content }}</p>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}
