@@ -27,6 +27,32 @@ argon2 = ["argon2-cffi (>=19.1.0)"]
 bcrypt = ["bcrypt"]
 
 [[package]]
+name = "django-ckeditor"
+version = "6.4.2"
+description = "Django admin CKEditor integration."
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+Django = ">=3.2"
+django-js-asset = ">=1.2.2"
+
+[[package]]
+name = "django-js-asset"
+version = "2.0.0"
+description = "script tag with additional attributes for django.forms.Media"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[package.extras]
+tests = ["coverage"]
+
+[[package]]
 name = "flake8"
 version = "4.0.1"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -113,7 +139,7 @@ python-versions = ">=2"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "a14a038df1fedba2971d6a98ab6659e5a9943c72103b01fc04c0caa92071111e"
+content-hash = "31fb1bff0b384685bace84d6089e33ae6704de8424f6a8aef2c76ee1f60f96d2"
 
 [metadata.files]
 asgiref = [
@@ -123,6 +149,14 @@ asgiref = [
 django = [
     {file = "Django-4.0.5-py3-none-any.whl", hash = "sha256:502ae42b6ab1b612c933fb50d5ff850facf858a4c212f76946ecd8ea5b3bf2d9"},
     {file = "Django-4.0.5.tar.gz", hash = "sha256:f7431a5de7277966f3785557c3928433347d998c1e6459324501378a291e5aab"},
+]
+django-ckeditor = [
+    {file = "django-ckeditor-6.4.2.tar.gz", hash = "sha256:db40bf9958a3f5a3e6053ff8d034a320b08050d5a385e5bd4defd6956d27e77e"},
+    {file = "django_ckeditor-6.4.2-py3-none-any.whl", hash = "sha256:3f1e963376e0d79c0db8d1b44e649d394565e3a71c16c212dcc85647e529ce1b"},
+]
+django-js-asset = [
+    {file = "django_js_asset-2.0.0-py3-none-any.whl", hash = "sha256:86f9f300d682537ddaf0487dc2ab356581b8f50c069bdba91d334a46e449f923"},
+    {file = "django_js_asset-2.0.0.tar.gz", hash = "sha256:adc1ee1efa853fad42054b540c02205344bb406c9bddf87c9e5377a41b7db90f"},
 ]
 flake8 = [
     {file = "flake8-4.0.1-py2.py3-none-any.whl", hash = "sha256:479b1304f72536a55948cb40a32dce8bb0ffe3501e26eaf292c7e60eb5e0428d"},

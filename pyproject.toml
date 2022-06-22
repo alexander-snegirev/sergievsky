@@ -10,6 +10,7 @@ Django = "^4.0.5"
 Pillow = "^9.1.1"
 python-dotenv = "^0.20.0"
 PyYAML = "^6.0"
+django-ckeditor = "^6.4.2"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

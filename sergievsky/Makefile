@@ -2,6 +2,8 @@ run:
 	./manage.py runserver
 migrate:
 	./manage.py makemigrations && ./manage.py migrate
+col-static:
+	./manage.py collectstatic
 fixture-dump-post:
 	./manage.py dumpdata blog.post --format yaml --output dump.db.yaml
 fixture-dump-all:
