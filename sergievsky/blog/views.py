@@ -15,15 +15,15 @@ class PostListView(ListView):
 
 class PostCreateView(CreateView):
     model = Post
-    fields = ['__all__']
-    # template_name = 'post/create.html'
+    fields = ['title', 'content', 'published']
+    template_name = 'post/create.html'
     raise_exception = True
 
 
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ['title', 'content', 'title_image', 'published']
-    # template_name = 'post/update.html'
+    fields = ['title', 'content', 'published']
+    template_name = 'post/update.html'
     raise_exception = True
 
 

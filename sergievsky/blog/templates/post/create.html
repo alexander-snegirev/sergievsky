@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Создание поста
+{% endblock %}
+
+{%  block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.media }}
+        {{ form }}
+        <input type="submit" value="Сохранить">
+    </form>
+{%  endblock %}
