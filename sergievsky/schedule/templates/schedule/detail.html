@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+
+{% block title %}
+  Расписание на {{ schedule.title}}
+{% endblock %}
+
+{% block style %}
+  <style type="text/css">
+    table {
+      width: 70rem;
+    }
+    .table {
+      border: 1px solid black;
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  {% for weeks in schedule %}
+    {% for table_title, tables in weeks.items %}
+      <h2>{{ table_title}}</h2>
+      <div class="table">
+        {% for table in tables %}
+          <p>{{table.date}}</p>
+          <p>{{ table.to_whom}}</p>
+          {% for tt in table.tt %}
+            <p>{{k.time}}</p>
+            <p>{{k.type_worship}}</p>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  {% endfor %}
+{% endblock %}

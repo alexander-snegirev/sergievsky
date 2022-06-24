@@ -11,6 +11,7 @@ Pillow = "^9.1.1"
 python-dotenv = "^0.20.0"
 PyYAML = "^6.0"
 django-ckeditor = "^6.4.2"
+python-docx = "^0.8.11"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^4.0.1"

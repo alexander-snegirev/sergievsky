@@ -1,0 +1,18 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}
+  Список расписаний
+{% endblock %}
+
+{% block style %}
+  <style type="text/css"></style>
+{% endblock %}
+
+{% block content %}
+  {% for schedule in schedules %}
+    <div class="card">
+      <a href="{{ schedule.get_absolute_url }}">{{ schedule.title }}</a>
+    </div>
+  {% endfor %}
+{% endblock %}
