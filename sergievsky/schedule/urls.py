@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ScheduleListView, ScheduleDetailView, ScheduleUpdateView, ScheduleDeleteView, ScheduleCreateView, schedule_detail
+from .views import ScheduleListView, ScheduleUpdateView, ScheduleDeleteView, ScheduleCreateView, ScheduleDetailView
 
 
 urlpatterns = [
@@ -13,19 +13,14 @@ urlpatterns = [
         ScheduleCreateView.as_view(),
         name='schedule_create'
     ),
-    path(
-        '<slug:slug>/update',
-        ScheduleUpdateView.as_view(),
-        name='schedule_update'
-    ),
     # path(
-    #     '<slug:slug>',
-    #     ScheduleDetailView.as_view(),
-    #     name='schedule_details'
+    #     '<slug:slug>/update',
+    #     ScheduleUpdateView.as_view(),
+    #     name='schedule_update'
     # ),
     path(
         '<slug:slug>',
-        schedule_detail,
+        ScheduleDetailView.as_view(),
         name='schedule_details'
     ),
     path(

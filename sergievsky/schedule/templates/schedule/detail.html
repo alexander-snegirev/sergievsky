@@ -6,31 +6,77 @@
 
 {% block style %}
   <style type="text/css">
-    table {
-      width: 70rem;
-    }
-    .table {
-      border: 1px solid black;
-      margin-top: 1rem;
-      padding: 1rem;
+    .table-container {
+      width: 70%;
     }
   </style>
 {% endblock %}
 
 {% block content %}
-  {% for weeks in schedule %}
-    {% for table_title, tables in weeks.items %}
-      <h2>{{ table_title}}</h2>
-      <div class="table">
-        {% for table in tables %}
-          <p>{{table.date}}</p>
-          <p>{{ table.to_whom}}</p>
-          {% for tt in table.tt %}
-            <p>{{k.time}}</p>
-            <p>{{k.type_worship}}</p>
-          {% endfor %}
-        {% endfor %}
-      </div>
+  <h2 class="mt-5 mb-5 text-center">Schedule details.</h2>
+  <h2 class="text-center mt-5">Schedule</h2>
+  <div class="button-block-ud text-center mb-5  mt-5">
+    <a class="btn btn-danger" href="{{ schedule.get_absolute_url }}/delete">Delete</a>
+    <a class="btn btn-warning" href="{{ schedule.get_absolute_url }}/update">Rewrite</a>
+  </div>
+  <div class="container mb-5">
+    {% for weeks in schedule.data %}
+      {% for table_title, tables in weeks.items %}
+        <h3 class="text-center">{{ table_title}}</h3>
+        <div class="d-flex table-container p-3 m-auto">
+          <table class="table table-sm table-bordered fixed">
+            <thead>
+              <tr class="text-center">
+                <th scope="col">Дата</th>
+                <th scope="col">Кому служба</th>
+                <th scope="col">Время</th>
+                <th scope="col">Вид богослужения</th>
+              </tr>
+            </thead>
+            <tbody class="">
+            {% for table in tables %}
+              {% if table.tt|length == 1 %}
+                <tr class="text-center align-middle">
+                    <td>{{ table.date }}</td>
+                    <td>
+                      {% if table.to_whom|length > 1 %}
+                        {% for tw in table.to_whom %}
+                          <p>{{ tw }}</p>
+                        {% endfor %}
+                      {% else %}
+                        {{ table.to_whom.0 }}
+                      {% endif %}
+                    </td>
+                    <td>{{ table.tt.0.time }}</td>
+                    <td>{{ table.tt.0.type_worship }}</td>
+                </tr>
+              {% else%}
+                <tr class="text-center align-middle">
+                    <td rowspan="{{ table.tt|length }}">{{ table.date }}</td>
+                    <td rowspan="{{ table.tt|length }}">
+                      {% if table.to_whom|length > 1 %}
+                        {% for tw in table.to_whom %}
+                          <p>{{ tw }}</p>
+                        {% endfor %}
+                      {% else %}
+                        {{ table.to_whom.0 }}
+                      {% endif %}
+                    </td>
+                    <td>{{ table.tt.0.time }}</td>
+                    <td>{{ table.tt.0.type_worship }}</td>
+                </tr>
+                {% for tt in table.tt|slice:'1:' %}
+                  <tr class="text-center align-middle">
+                    <td>{{ tt.time }}</td>
+                    <td>{{ tt.type_worship }}</td>
+                  </tr>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% endfor %}
     {% endfor %}
-  {% endfor %}
+  </div>
 {% endblock %}

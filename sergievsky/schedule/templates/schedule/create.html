@@ -4,10 +4,29 @@
   Добавление расписания
 {% endblock %}
 
+{% block style %}
+  <style type="text/css">
+    .card {
+      display: flex;
+      flex-direction: column;
+      min-width: 40%;
+      max-width: 50%;
+    }
+  </style>
+{% endblock %}
+
 {%  block content %}
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Сохранить">
-    </form>
+    <h2 class="mt-5 mb-5 text-center">Creating a schedule.</h2>
+    <div class="card m-auto p-4">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group mt-3">
+                        {{ field.label }}
+                        {{ field }}
+                    </div>
+                {% endfor%}
+                <input class="btn btn-primary mt-5" type="submit" value="Сохранить">
+        </form>
+    </div>
 {%  endblock %}

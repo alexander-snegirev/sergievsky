@@ -6,13 +6,30 @@
 {% endblock %}
 
 {% block style %}
-  <style type="text/css"></style>
+  <style type="text/css">
+    .card {
+      min-width: 18rem;
+    }
+    .card > ul {
+      display: flex;
+    }
+    .card > ul > li {
+      list-style: none;
+    }
+  </style>
 {% endblock %}
 
 {% block content %}
-  {% for schedule in schedules %}
-    <div class="card">
-      <a href="{{ schedule.get_absolute_url }}">{{ schedule.title }}</a>
-    </div>
-  {% endfor %}
+  <div class="button-block-ud text-center mb-5  mt-5">
+    <a class="btn btn-primary" href="{% url 'schedule_create' %}">Create</a>
+  </div>
+  <div class="card text-center">
+    <ul>
+      {% for schedule in schedules %}
+
+        <li><a href="{{ schedule.get_absolute_url }}">{{ schedule.title }}</a></li>
+
+      {% endfor %}
+    </ul>
+  </div>
 {% endblock %}

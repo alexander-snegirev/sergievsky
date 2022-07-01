@@ -1,6 +1,5 @@
-import json
 import sys
-
+import json
 from docx import Document
 
 
@@ -14,7 +13,7 @@ def _handler_get_table_data(tables):
             else:
                 schedule = dict(
                     date=date.text,
-                    to_whom=to_whom.text,
+                    to_whom=to_whom.text.splitlines(),
                     tt=[dict(time=time.text, type_worship=type_worship.text)]
                 )
                 schedule_list.append(schedule)
@@ -27,7 +26,6 @@ def get_data(docx_file):
     data = {}
     for item in range(len(paragraphs)):
         parsing_data = dict(data=_handler_get_table_data(document.tables[item]))
-        # data_raw = {item: {paragraphs[item]: {}}}
         data_raw = {item: {'title_table': paragraphs[item], 'tables': {}}}
         data_raw[item]['tables'].update(parsing_data)
         data.update(data_raw)
